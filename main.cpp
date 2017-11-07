@@ -3,12 +3,13 @@
 #include "TOctergon.h"
 #include "Tree.h"
 #include "TreeItem.h"
+#include "TIterator.h"
 #include <iostream>
 #include <memory>
 
 int main() {
 	
-	Tree tree;
+    Tree<Polygon> tree;
 	int n = 0;
 	std::cin >> n;
 	std::shared_ptr<Polygon> pt1(new Triangle(1, 1, 1, 1, 1, 1));
@@ -18,7 +19,10 @@ int main() {
 
 	std::shared_ptr<Polygon> pt5(new Hexagon(3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3));
 	std::shared_ptr<Polygon> pt6(new Hexagon(4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4));
-	while(n != 8) {
+
+
+
+    while(n != 9) {
 		switch(n) {
 			case 1:
 				tree.PushRoot(std::shared_ptr<Polygon>(new Triangle(1, 1, 1, 1, 1, 1)));
@@ -29,7 +33,7 @@ int main() {
 				
 				break;
 			case 3:
-				tree.Print();
+                tree.Print();
 				break;
 			case 4:
 				tree.Push(pt1, pt3);
@@ -43,8 +47,18 @@ int main() {
 			case 7:
 				tree.Destroy();
 				break;
+            case 8:{
+                for (auto i: tree)
+                {
+                    i->Print();
+                   std::cout<<std::endl;
+                  }
+
+                break;
+                }
 			default:
-				std::cout << "Try again" << std::endl;
+                std::cout << "Try again" << std::endl;
+
 				break;
 		}
 		std::cin >> n;

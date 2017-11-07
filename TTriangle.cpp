@@ -37,7 +37,7 @@ void Triangle::Print()
     {
         std::cout << this->coordinates[i] << " ";
     }
-    //std::cout << std::endl;
+    std::cout << std::endl;
 };
 
 double Triangle::Square(){
